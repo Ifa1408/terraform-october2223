@@ -19,7 +19,7 @@ resource "aws_vpc" "group-2" {
 resource "aws_subnet" "s1" {
   vpc_id     = aws_vpc.group-2.id
   cidr_block = var.subnet1_cidr
-  availability_zone = "us-east-2a"
+  subnet_id = aws_subnet.s1.id
   map_public_ip_on_launch = true
 
   tags = {
@@ -31,7 +31,7 @@ resource "aws_subnet" "s2" {
   vpc_id     = aws_vpc.group-2.id
   cidr_block = var.subnet2_cidr
 
-  availability_zone = "us-east-2b"
+
   map_public_ip_on_launch = true
 
   tags = {
@@ -42,7 +42,6 @@ resource "aws_subnet" "s2" {
 resource "aws_subnet" "s3" {
   vpc_id     = aws_vpc.group-2.id
   cidr_block = var.subnet3_cidr
-  availability_zone = "us-east-2c"
   map_public_ip_on_launch = true
 
   tags = {

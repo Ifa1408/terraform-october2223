@@ -14,10 +14,14 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
 resource "aws_instance" "group-2" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  subnet_id = aws_subnet.main1.id
+  subnet_id = aws_subnet.s1.id
   vpc_security_group_ids = [aws_security_group.group-2.id]
   key_name = aws_key_pair.project2.key_name
   user_data = file("gitlab.sh")
@@ -25,7 +29,7 @@ resource "aws_instance" "group-2" {
 } 
 
 output ec2 {
-  value = aws_instance.web.public_ip
+  value = aws_instance.group-2.public_ip
 }
 # resource "aws_key_pair" "project2" {
 # key_name = "group-2"
