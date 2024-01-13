@@ -19,7 +19,6 @@ resource "aws_vpc" "group-2" {
 resource "aws_subnet" "s1" {
   vpc_id     = aws_vpc.group-2.id
   cidr_block = var.subnet1_cidr
-  subnet_id = aws_subnet.s1.id
   map_public_ip_on_launch = true
 
   tags = {
