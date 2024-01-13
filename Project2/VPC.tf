@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-2"
+  region = var.region
 }
 
 resource "aws_key_pair" "project2" {
@@ -18,7 +18,7 @@ resource "aws_vpc" "group-2" {
 
 resource "aws_subnet" "s1" {
   vpc_id     = aws_vpc.group-2.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.subnet1_cidr
   availability_zone = "us-east-2a"
   map_public_ip_on_launch = true
 
@@ -29,7 +29,8 @@ resource "aws_subnet" "s1" {
 
 resource "aws_subnet" "s2" {
   vpc_id     = aws_vpc.group-2.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.subnet2_cidr
+
   availability_zone = "us-east-2b"
   map_public_ip_on_launch = true
 
@@ -40,7 +41,7 @@ resource "aws_subnet" "s2" {
 
 resource "aws_subnet" "s3" {
   vpc_id     = aws_vpc.group-2.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.subnet3_cidr
   availability_zone = "us-east-2c"
   map_public_ip_on_launch = true
 

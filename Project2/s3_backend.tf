@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "test-ifadat"
-    key    = "ohio/terraform.tfstate"
-    region = "us-east-2"
-    dynamodb_table = "kaizen"
+    bucket = "mybucketproject2"
+    key    = "project2/terraform.tfstate"
+    region = "us-east-1"
+    # dynamodb_table = "lock-state"
   }
 }

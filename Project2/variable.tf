@@ -1,7 +1,7 @@
 variable region {    #what type of variable we can use
     type = string  #mandatory part
     description = "Provide region"
-    default = ""   #what region  by default
+   
 }
 
 variable cidr_block {   
@@ -37,7 +37,7 @@ variable "ami" {
 variable "instance_type" {
     type = string
     description = "Instance type"
-    default = "t2.micro"  
+    default = "t2.large"  
 }
 
 variable "name_tag" {

@@ -16,10 +16,18 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "group-2" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  availability_zone = "us-east-2a"
+  instance_type = var.instance_type
+  subnet_id = aws_subnet.main1.id
   vpc_security_group_ids = [aws_security_group.group-2.id]
   key_name = aws_key_pair.project2.key_name
-  user_data = file("apache.sh")
+  user_data = file("gitlab.sh")
   # count = 3
+} 
+
+output ec2 {
+  value = aws_instance.web.public_ip
 }
+# resource "aws_key_pair" "project2" {
+# key_name = "group-2"
+# public_key = file("~/ssh/id_rsa.pub")
+# }
